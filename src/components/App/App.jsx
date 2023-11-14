@@ -2,8 +2,7 @@ import { Component } from "react";
 import { GlobalStyle } from "../GlobalStyle";
 
 import { fetchImages } from "../services/api";
-import { RotatingLines } from "react-loader-spinner";
-
+import { Loader } from "../Loader/Loader";
 import { Searchbar } from "../Searchbar/Searchbar";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
 import { Button } from "../Button/Button";
@@ -14,6 +13,7 @@ export class App extends Component {
     images: [],
     query: "",
     page: 1,
+    totalPages: null,
     error: false,
     isLoading: false,
   };
@@ -55,25 +55,25 @@ export class App extends Component {
   };
 
   render() {
-    const { isLoading, error, images } = this.state;
-    const galleryImages = images.length !== 0;
+    const { isLoading, error, images, totalPages, page } = this.state;
+    const galleryImages = images.length !== 0; //перевіряємо чи є зображення для завантаження
+    const notLastPage = page < totalPages; //перевіряємо чи є ще сторінки для завантаження
     return (
       <Container>
         <Searchbar onSubmit={this.handleSubmit} />
-        {isLoading && (
-          <RotatingLines
-            strokeColor="grey"
-            strokeWidth="5"
-            animationDuration="0.75"
-            width="96"
-            visible={true}
-          />
-        )}
+
         {error && (
           <p>Oops! Something went wrong! Please try reloading this page!</p>
         )}
+
+        <Loader isLoading={isLoading} />
+
         {galleryImages && <ImageGallery images={images}></ImageGallery>}
-        <Button btnName="Load more" onClick={this.handleLoadMore} />
+
+        {galleryImages && notLastPage && (
+          <Button btnName="Load more" onClick={this.handleLoadMore} />
+        )}
+
         <GlobalStyle />
       </Container>
     );

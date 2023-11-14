@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { ImageModal } from "../Modal/Modal";
-
+import { ImgGalleryItem, ImgGallery } from "./ImageGalleryItem.styled";
 export class ImageGalleryItem extends Component {
   state = {
     isModalOpen: false,
@@ -13,15 +13,16 @@ export class ImageGalleryItem extends Component {
   };
   render() {
     const { image, largeImage } = this.props;
+    const { isModalOpen } = this.state;
 
     return (
       <>
-        <li onClick={this.handleModal}>
-          <img src={image} alt="" />
-        </li>
-        {this.isModalOpen && (
+        <ImgGalleryItem onClick={this.handleModal}>
+          <ImgGallery src={image} alt="" />
+        </ImgGalleryItem>
+        {isModalOpen && (
           <ImageModal
-            isOpen={this.isModalOpen}
+            isOpen={isModalOpen}
             onClose={this.handleModal}
             largeImg={largeImage}
           />
