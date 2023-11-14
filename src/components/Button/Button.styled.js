@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 // .Button {
 //   padding: 8px 16px;
 //   border-radius: 2px;
