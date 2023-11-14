@@ -34,10 +34,10 @@ export const StyledButton = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url("https://image.flaticon.com/icons/svg/149/149852.svg");
-  background-size: 40%;
+  background-image: url("/src/img/magnifying_glass.png");
+  background-size: 70%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 50%;
   opacity: 0.6;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;

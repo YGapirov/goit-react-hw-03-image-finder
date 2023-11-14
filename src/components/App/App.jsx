@@ -1,12 +1,13 @@
 import { Component } from "react";
-import { GlobalStyle } from "./GlobalStyle";
+import { GlobalStyle } from "../GlobalStyle";
 
-import { fetchImages } from "./services/api";
+import { fetchImages } from "../services/api";
 import { RotatingLines } from "react-loader-spinner";
 
-import { Searchbar } from "./Searchbar/Searchbar";
-import { ImageGallery } from "./ImageGallery/ImageGallery";
-import { Button } from "./Button/Button";
+import { Searchbar } from "../Searchbar/Searchbar";
+import { ImageGallery } from "../ImageGallery/ImageGallery";
+import { Button } from "../Button/Button";
+import { Container } from "./App.styled";
 
 export class App extends Component {
   state = {
@@ -37,7 +38,7 @@ export class App extends Component {
   }
 
   handleSubmit = (newQuery) => {
-    this.serState({
+    this.setState({
       query: newQuery,
       page: 1, //скидуєм номер сторінки
       images: [], //скидуєм масив зобр
@@ -55,8 +56,9 @@ export class App extends Component {
 
   render() {
     const { isLoading, error, images } = this.state;
+    const galleryImages = images.length !== 0;
     return (
-      <div>
+      <Container>
         <Searchbar onSubmit={this.handleSubmit} />
         {isLoading && (
           <RotatingLines
@@ -70,10 +72,10 @@ export class App extends Component {
         {error && (
           <p>Oops! Something went wrong! Please try reloading this page!</p>
         )}
-        {/* <ImageGallery gallery={images}></ImageGallery> */}
+        {galleryImages && <ImageGallery images={images}></ImageGallery>}
         <Button btnName="Load more" onClick={this.handleLoadMore} />
         <GlobalStyle />
-      </div>
+      </Container>
     );
   }
 }

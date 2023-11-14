@@ -18,15 +18,15 @@ export const Searchbar = ({ onSubmit }) => {
       }}
     >
       <StyledForm>
+        <StyledButton>
+          <StyledBtnLabel>Search</StyledBtnLabel>
+        </StyledButton>
         <StyledField
           type="text"
           autoComplete="off"
           name="query"
           placeholder="Search images and photos"
         />
-        <StyledButton>
-          <StyledBtnLabel>Search</StyledBtnLabel>
-        </StyledButton>
       </StyledForm>
     </Formik>
   );
