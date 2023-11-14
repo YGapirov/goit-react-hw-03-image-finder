@@ -1,11 +1,12 @@
 import { Component } from "react";
-import { GlobalStyle } from "../GlobalStyle";
+import { GlobalStyle } from "./GlobalStyle";
 
 import { fetchImages } from "./services/api";
 import { RotatingLines } from "react-loader-spinner";
 
 import { Searchbar } from "./Searchbar/Searchbar";
 import { ImageGallery } from "./ImageGallery/ImageGallery";
+import { Button } from "./Button/Button";
 
 export class App extends Component {
   state = {
@@ -69,8 +70,8 @@ export class App extends Component {
         {error && (
           <p>Oops! Something went wrong! Please try reloading this page!</p>
         )}
-        <ImageGallery gallery={images}></ImageGallery>
-        <button>Load more</button>
+        {/* <ImageGallery gallery={images}></ImageGallery> */}
+        <Button btnName="Load more" onClick={this.handleLoadMore} />
         <GlobalStyle />
       </div>
     );
