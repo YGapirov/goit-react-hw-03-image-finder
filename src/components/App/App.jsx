@@ -26,9 +26,16 @@ export class App extends Component {
       // записуємо результат в img
       try {
         this.setState({ isLoading: true, error: false });
-        const initialImages = await fetchImages(query, page);
+        const response = await fetchImages(query, page);
 
-        this.setState({ images: initialImages });
+        this.setState((prevState) => {
+          const { hits, totalHits } = response;
+          return {
+            images: [...prevState.images, ...hits],
+            isLoading: false,
+            totalPages: Math.ceil(totalHits / 12),
+          };
+        });
       } catch (error) {
         this.setState({ error: true });
       } finally {

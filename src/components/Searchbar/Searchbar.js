@@ -16,7 +16,7 @@ export const Searchbar = ({ onSubmit }) => {
           query: "",
         }}
         onSubmit={(values, actions) => {
-          onSubmit(values);
+          onSubmit(values.query); //передаємо значення квері додавши до валуе квері
           actions.resetForm();
         }}
       >
