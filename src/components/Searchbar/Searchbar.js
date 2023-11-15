@@ -21,12 +21,12 @@ export const Searchbar = ({ onSubmit }) => {
           actions.resetForm();
         }}
       >
-        <Form className={css.searchForm}>
-          <button className={css.searchFormButton}>
-            <span className={css.searchFormButtonLabel}>Search</span>
+        <Form className={css.SearchForm}>
+          <button type="submit" className={css.SearchFormButton}>
+            <span className={css.SearchFormButtonLabel}>Search</span>
           </button>
           <Field
-            className={css.searchFormInput}
+            className={css.SearchFormInput}
             type="text"
             autoComplete="off"
             autoFocus
