@@ -1,13 +1,6 @@
 import { Formik, Form, Field } from "formik";
 
 import css from "./Searchbar.module.css";
-// import {
-//   StyledForm,
-//   StyledField,
-//   StyledButton,
-//   StyledBtnLabel,
-//   SearchBar,
-// } from "./Searchbar.styled";
 
 export const Searchbar = ({ onSubmit }) => {
   return (
