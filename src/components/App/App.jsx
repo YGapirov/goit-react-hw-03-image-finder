@@ -1,7 +1,7 @@
 import { Component } from "react";
-import { GlobalStyle } from "../GlobalStyle";
+import { GlobalStyle } from "../../GlobalStyle";
 
-import { fetchImages } from "../services/api";
+import { fetchImages } from "../../services/api";
 import { Loader } from "../Loader/Loader";
 import { Searchbar } from "../Searchbar/Searchbar";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
